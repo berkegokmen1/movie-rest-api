@@ -1,0 +1,20 @@
+{
+  "name": "mymovies",
+  "version": "1.0.0",
+  "description": "A simple REST API project for fetching favourite movies' posters.",
+  "main": "app.js",
+  "scripts": {
+    "dev": "env-cmd -f ./config/dev.env nodemon app.js -e js,mjs,json",
+    "start": "node app.js"
+  },
+  "author": "berkegokmen",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
+    "sequelize": "^6.6.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
