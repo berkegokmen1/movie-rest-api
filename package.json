@@ -1,22 +1,25 @@
 {
-  "name": "mymovies",
-  "version": "1.0.0",
-  "description": "A simple REST API project for fetching favourite movies' posters.",
-  "main": "app.js",
-  "scripts": {
-    "dev": "env-cmd -f ./config/dev.env nodemon app.js -e js,mjs,json",
-    "start": "node app.js"
-  },
-  "author": "berkegokmen",
-  "license": "ISC",
-  "dependencies": {
-    "axios": "^0.21.1",
-    "express": "^4.17.1",
-    "mysql2": "^2.2.5",
-    "sequelize": "^6.6.5"
-  },
-  "devDependencies": {
-    "env-cmd": "^10.1.0",
-    "nodemon": "^2.0.12"
-  }
+	"name": "mymovies",
+	"version": "1.0.0",
+	"description": "A simple REST API project for fetching favourite movies' posters.",
+	"main": "app.js",
+	"scripts": {
+		"dev": "env-cmd -f ./config/dev.env nodemon app.js -e js,mjs,json | ./node_modules/.bin/pino-pretty",
+		"start": "node app.js"
+	},
+	"author": "berkegokmen",
+	"license": "ISC",
+	"dependencies": {
+		"axios": "^0.21.1",
+		"express": "^4.17.1",
+		"express-pino-logger": "^6.0.0",
+		"mysql2": "^2.2.5",
+		"pino": "^6.12.0",
+		"sequelize": "^6.6.5"
+	},
+	"devDependencies": {
+		"env-cmd": "^10.1.0",
+		"nodemon": "^2.0.12",
+		"pino-pretty": "^5.1.1"
+	}
 }
