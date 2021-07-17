@@ -1,26 +1,32 @@
 // Npm Packages
 const express = require('express');
-const pino = require('pino');
-const expressPino = require('express-pino-logger');
 
 // My imports
 const sequelize = require('./util/database');
 const User = require('./models/user.model');
-const favMovie = require('./models/favMovie.model');
-
-// Pino logger configuration
-const logger = pino({ level: process.env.LOG_LEVEL || 'info' });
-const expressLogger = expressPino({ logger });
+const FavMovie = require('./models/favMovie.model');
+const Token = require('./models/token.model');
+const userRoutes = require('./routes/user.routes');
+const { get404 } = require('./controllers/errors.controller');
+const { logger, expressLogger } = require('./util/logger');
 
 // Create express app
 const app = express();
+// parse application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: false }));
 
-// For logging
+// Pino logger configuration
 app.use(expressLogger);
 
+// Routes
+app.use('/user', userRoutes);
+app.use(get404);
+
 // Declare relations
-User.hasMany(favMovie, { foreignKey: 'user_id' });
-favMovie.belongsTo(User, { foreignKey: 'user_id' });
+User.hasMany(FavMovie, { foreignKey: 'user_id' });
+FavMovie.belongsTo(User, { foreignKey: 'user_id' });
+User.hasMany(Token, { foreignKey: 'user_id' });
+Token.belongsTo(User, { foreignKey: 'user_id' });
 
 // Initialize sequelize and mysql database
 sequelize

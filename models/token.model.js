@@ -2,8 +2,8 @@ const Sequelize = require('sequelize').Sequelize;
 
 const sequelize = require('../util/database');
 
-const FavMovie = sequelize.define(
-	'favourite_movie',
+const Token = sequelize.define(
+	'token',
 	{
 		id: {
 			type: Sequelize.INTEGER,
@@ -11,7 +11,7 @@ const FavMovie = sequelize.define(
 			allowNull: false,
 			primaryKey: true,
 		},
-		title: {
+		tokenValue: {
 			type: Sequelize.STRING,
 			allowNull: false,
 		},
@@ -19,4 +19,4 @@ const FavMovie = sequelize.define(
 	{ timestamps: false }
 );
 
-module.exports = FavMovie;
+module.exports = Token;
