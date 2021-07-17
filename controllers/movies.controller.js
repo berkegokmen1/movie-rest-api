@@ -14,8 +14,8 @@ const getMoviesTitle = async (req, res, next) => {
 		const result = await axios.get(
 			`http://www.omdbapi.com/?apikey=${process.env.OMDB_API_KEY}&t=${title}`
 		);
-		if (result.data.response == 'False') {
-			return res.status(404).json({ error: 'Movie not found.' });
+		if (result.data.Response === 'False') {
+			return res.json({ error: 'Movie not found.' });
 		}
 
 		return res.json({
@@ -55,7 +55,7 @@ const postMoviesFavourite = async (req, res, next) => {
 		);
 
 		if (data.data.error) {
-			return res.status(404).json({ error: 'Movie not found.' });
+			return res.json({ error: 'Movie not found.' });
 		}
 
 		await req.user.createFavourite_movie({
