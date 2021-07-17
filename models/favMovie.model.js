@@ -15,6 +15,10 @@ const FavMovie = sequelize.define(
 			type: Sequelize.STRING,
 			allowNull: false,
 		},
+		posterUrl: {
+			type: Sequelize.STRING,
+			allowNull: false,
+		},
 	},
 	{ timestamps: false }
 );

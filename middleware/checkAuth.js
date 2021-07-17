@@ -17,7 +17,7 @@ const checkAuth = async (req, res, next) => {
 		const tokens = await user.getTokens({ where: { tokenValue: token } });
 
 		if (tokens.length <= 0) {
-			return res.status(401).json({ error: 'Invalid or expired token.' });
+			return res.status(403).json({ error: 'Invalid or expired token.' });
 		}
 
 		req.token = token;
@@ -25,7 +25,7 @@ const checkAuth = async (req, res, next) => {
 		next();
 	} catch (err) {
 		logger.error(err);
-		return res.status(401).json({ error: 'Please authenticate.' });
+		return res.status(403).json({ error: 'Please authenticate.' });
 	}
 };
 

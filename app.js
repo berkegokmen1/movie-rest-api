@@ -7,6 +7,7 @@ const User = require('./models/user.model');
 const FavMovie = require('./models/favMovie.model');
 const Token = require('./models/token.model');
 const userRoutes = require('./routes/user.routes');
+const moviesRoutes = require('./routes/movies.routes');
 const { get404 } = require('./controllers/errors.controller');
 const { logger, expressLogger } = require('./util/logger');
 
@@ -20,13 +21,14 @@ app.use(expressLogger);
 
 // Routes
 app.use('/user', userRoutes);
+app.use('/movies', moviesRoutes);
 app.use(get404);
 
 // Declare relations
 User.hasMany(FavMovie, { foreignKey: 'user_id' });
-FavMovie.belongsTo(User, { foreignKey: 'user_id' });
+FavMovie.belongsTo(User, { foreignKey: 'user_id', onDelete: 'CASCADE' });
 User.hasMany(Token, { foreignKey: 'user_id' });
-Token.belongsTo(User, { foreignKey: 'user_id' });
+Token.belongsTo(User, { foreignKey: 'user_id', onDelete: 'CASCADE' });
 
 // Initialize sequelize and mysql database
 sequelize
@@ -38,6 +40,3 @@ sequelize
 		});
 	})
 	.catch((e) => logger.error(e));
-
-// Export logger
-module.exports = { logger };
