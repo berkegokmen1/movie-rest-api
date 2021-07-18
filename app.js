@@ -14,7 +14,7 @@ const axios = require('axios').default;
 
 // Create express app
 const app = express();
-// parse application/x-www-form-urlencoded
+// parse application/x-www-form-urlencoded, application/json
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 

@@ -1,3 +1,4 @@
 node_modules/
 config/dev.env
 **/.DS_Store
+.gitignore

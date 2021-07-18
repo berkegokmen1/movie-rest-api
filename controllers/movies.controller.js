@@ -1,4 +1,3 @@
-const FavMovie = require('../models/favMovie.model');
 const { logger } = require('../util/logger');
 const axios = require('axios').default;
 
