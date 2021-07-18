@@ -10,11 +10,13 @@ const userRoutes = require('./routes/user.routes');
 const moviesRoutes = require('./routes/movies.routes');
 const { get404 } = require('./controllers/errors.controller');
 const { logger, expressLogger } = require('./util/logger');
+const axios = require('axios').default;
 
 // Create express app
 const app = express();
 // parse application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 // Pino logger configuration
 app.use(expressLogger);

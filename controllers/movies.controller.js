@@ -37,6 +37,15 @@ const getMoviesFavourite = async (req, res, next) => {
 		const favMoviesModified = favMovies.map((m) => {
 			return { title: m.title, posterUrl: m.posterUrl };
 		});
+
+		res.set('Content-Type', 'application/json; charset=utf-8');
+		res.cookie('access_token', 'Bearer ' + req.token, {
+			expires: new Date(Date.now() + 3600000), // cookie will be removed after 1 hour
+		});
+		res.setHeader(
+			'Set-Cookie',
+			'session_id=123456; Max-Age=3600; HttpOnly, Secure'
+		);
 		return res.json(favMoviesModified);
 	} catch (err) {
 		logger.error(err);

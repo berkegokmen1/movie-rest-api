@@ -5,6 +5,12 @@ const jwt = require('jsonwebtoken');
 
 const postLogin = async (req, res, next) => {
 	try {
+		if (!req.body.name || !req.body.password) {
+			return res
+				.status(406)
+				.json({ error: 'Please provide both name and password.' });
+		}
+
 		const user = await User.findOne({ where: { name: req.body.name } });
 		if (!user) {
 			return res.status(404).json({ error: 'Invalid credentials.' });
@@ -31,6 +37,12 @@ const postLogin = async (req, res, next) => {
 
 const postRegister = async (req, res, next) => {
 	try {
+		if (!req.body.name || !req.body.password) {
+			return res
+				.status(406)
+				.json({ error: 'Please provide both name and password.' });
+		}
+
 		let user = await User.findOne({ where: { name: req.body.name } });
 		if (user) {
 			return res.status(406).json({ error: 'Username is already in use.' });
