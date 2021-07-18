@@ -51,7 +51,7 @@ Full documentation can be found [here][docs].
 [MIT](https://choosealicense.com/licenses/mit/)
 
 [docs]: ./DOCUMENTATION.md
-[repo]: https://github.com/berkegokmen1/games-platform
+[repo]: https://github.com/berkegokmen1/myMovies
 [node.js]: http://nodejs.org
 [express]: http://expressjs.com
 [jwt]: https://jwt.io
