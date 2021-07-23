@@ -19,20 +19,19 @@ And of course this project itself is open source with a [public repository][repo
 
 ### Running server locally
 
-Clone or download the project to your local machine.
-Create a dev.env file under `/config` folder.
+Clone or download the project to your local machine. Specify the arguments in the `.env` file in the root of the project. Below is a sample `.env` file.
 Copy and paste the following fields. Specify the arguments.
 
 ```env
-PORT=
-DB_NAME=
-DB_USERNAME=
-DB_PASS=
-DB_HOST=
-LOG_LEVEL=
-JWT_SECRET=
-OMDB_API_KEY=
-BASE_URL=
+PORT=3000
+DB_NAME=[MYSQL DB NAME]
+DB_USERNAME=[MYSQL DB USERNAME]
+DB_PASS=[MYSQL DB PASS]
+DB_HOST=localhost
+LOG_LEVEL=info
+JWT_SECRET=awesome_secret
+OMDB_API_KEY=[OMDB API KEY]
+BASE_URL=localhost:3000
 ```
 
 then run the following commands.

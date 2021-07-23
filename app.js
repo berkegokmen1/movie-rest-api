@@ -1,6 +1,9 @@
 // Npm Packages
 const express = require('express');
 
+// Load environment variables
+require('dotenv').config();
+
 // My imports
 const sequelize = require('./util/database');
 const User = require('./models/user.model');
@@ -10,7 +13,6 @@ const userRoutes = require('./routes/user.routes');
 const moviesRoutes = require('./routes/movies.routes');
 const { get404 } = require('./controllers/errors.controller');
 const { logger, expressLogger } = require('./util/logger');
-const axios = require('axios').default;
 
 // Create express app
 const app = express();
